@@ -1,14 +1,16 @@
-web:
-  image: nginx:alpine
-  ports:
-    - "8080:80"
-  volumes:
-    - ./code:/code
-    - ./site.conf:/etc/nginx/conf.d/default.conf
-  links:
-    - php
-php:
-  image: php:fpm-alpine
-  volumes:
-    - ./code:/code
+version: '2'
+
+services:
+
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./code:/code
+      - ./site.conf:/etc/nginx/conf.d/default.conf
+  php:
+    image: php:fpm-alpine
+    volumes:
+      - ./code:/code
 
